@@ -1,0 +1,27 @@
+
+ExperimentConfig.image_scale = 8
+ExperimentConfig.datasource_spec = {
+    'type': 'nerfies',
+    'data_dir': '/content/gdrive/My Drive/nerfies/captures/capture1',
+    'camera_type': 'json',
+}
+
+ModelConfig.use_warp = True
+ModelConfig.use_viewdirs = 1
+ModelConfig.use_appearance_metadata = 1
+ModelConfig.warp_field_type = 'se3'
+ModelConfig.num_warp_freqs = 8
+ModelConfig.num_coarse_samples = 64
+ModelConfig.num_fine_samples = 64
+
+TrainConfig.max_steps = 100000
+TrainConfig.batch_size = 4096
+TrainConfig.print_every = 100
+TrainConfig.use_elastic_loss = False
+TrainConfig.use_background_loss = False
+TrainConfig.warp_alpha_schedule = {
+    'type': 'linear',
+    'initial_value': 0.0,
+    'final_value': 8,
+    'num_steps': 80000,
+}
